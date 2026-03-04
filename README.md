@@ -103,7 +103,6 @@ src/
 
 - **CI** (`ci.yml`): Runs lint, tests, and build on push to `develop`/`main` and PRs to `main`
 - **Deploy** (`deploy.yml`): Auto-deploys to Vercel (production) on push to `main`
-- **Preview** (`preview.yml`): Deploys preview to Vercel on PRs to `main`, comments preview URL on the PR
 
 ### Required Secrets
 

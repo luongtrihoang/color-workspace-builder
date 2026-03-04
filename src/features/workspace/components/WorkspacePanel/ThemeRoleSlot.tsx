@@ -37,6 +37,7 @@ export default function ThemeRoleSlot({ role, hex, backgroundHex }: ThemeRoleSlo
   return (
     <div
       ref={setNodeRef}
+      aria-label={`${role} color slot${hex ? `: ${hex}` : ' — empty, drop color here'}`}
       className={cn(
         'relative flex flex-col items-center justify-center rounded-lg border-2 p-3 transition-all min-h-[100px]',
         hex ? 'border-solid' : 'border-dashed border-muted-foreground/30',
