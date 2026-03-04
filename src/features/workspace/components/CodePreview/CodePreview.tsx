@@ -1,21 +1,25 @@
 import { useWorkspace } from '../../hooks/useWorkspace'
+import { useWorkspaceStore } from '../../stores/workspaceStore'
+import { DARK_FALLBACK_ROLES, LIGHT_FALLBACK_ROLES } from '../../services/themePresets'
 import CodeToken from './CodeToken'
 
 export default function CodePreview() {
   const { activeTheme } = useWorkspace()
+  const isDarkMode = useWorkspaceStore((s) => s.isDarkMode)
   if (!activeTheme) return null
 
   const r = activeTheme.roles
-  const bg = r.background ?? '#1e1e1e'
-  const fg = r.foreground ?? '#d4d4d4'
+  const fallback = isDarkMode ? DARK_FALLBACK_ROLES : LIGHT_FALLBACK_ROLES
+  const bg = r.background ?? fallback.background
+  const fg = r.foreground ?? fallback.foreground
 
   const cssVars = {
     '--color-bg': bg,
     '--color-fg': fg,
-    '--color-keyword': r.keyword ?? '#569cd6',
-    '--color-string': r.string ?? '#ce9178',
-    '--color-comment': r.comment ?? '#6a9955',
-    '--color-function': r.function ?? '#dcdcaa',
+    '--color-keyword': r.keyword ?? fallback.keyword,
+    '--color-string': r.string ?? fallback.string,
+    '--color-comment': r.comment ?? fallback.comment,
+    '--color-function': r.function ?? fallback.function,
   } as React.CSSProperties
 
   return (

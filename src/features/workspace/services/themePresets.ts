@@ -1,4 +1,22 @@
-import type { WorkspaceTheme } from '../types'
+import type { WorkspaceTheme, ThemeRole } from '../types'
+
+export const DARK_FALLBACK_ROLES: Record<ThemeRole, string> = {
+  background: '#1e1e1e',
+  foreground: '#d4d4d4',
+  keyword: '#569cd6',
+  string: '#ce9178',
+  comment: '#6a9955',
+  function: '#dcdcaa',
+}
+
+export const LIGHT_FALLBACK_ROLES: Record<ThemeRole, string> = {
+  background: '#ffffff',
+  foreground: '#1e1e1e',
+  keyword: '#0000ff',
+  string: '#a31515',
+  comment: '#008000',
+  function: '#795e26',
+}
 
 export const BUILT_IN_THEMES: WorkspaceTheme[] = [
   {
@@ -31,13 +49,6 @@ export const BUILT_IN_THEMES: WorkspaceTheme[] = [
     id: 'vscode',
     name: 'VSCode Dark',
     isBuiltIn: true,
-    roles: {
-      background: '#1e1e1e',
-      foreground: '#d4d4d4',
-      keyword: '#569cd6',
-      string: '#ce9178',
-      comment: '#6a9955',
-      function: '#dcdcaa',
-    },
+    roles: { ...DARK_FALLBACK_ROLES },
   },
 ]
